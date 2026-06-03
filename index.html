@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ata de Defesa | PPGD UEPG</title>
+  <style>
+    /* ========== DESIGN SYSTEM PPGD ========== */
+    :root {
+      --azul: #002855;
+      --azul-claro: #e8f0fb;
+      --ouro: #c9a135;
+      --fundo: #f7f8fb;
+      --card: #ffffff;
+      --texto: #1a1f2e;
+      --borda: #d1d5db;
+      --erro: #c7362b;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--fundo);
+      padding: 2rem 1rem;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: var(--card);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .header-logos {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--azul);
+    }
+    .logo-img {
+      height: 70px;
+      width: auto;
+      object-fit: contain;
+    }
+    .info-inst {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #333;
+      margin-bottom: 1rem;
+      line-height: 1.4;
+    }
+    .numero-ata {
+      text-align: right;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+    h1 {
+      text-align: center;
+      color: var(--azul);
+      font-size: 1.9rem;
+      margin-bottom: 0.5rem;
+    }
+    .subtitulo {
+      text-align: center;
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      color: #4a5568;
+      font-weight: normal;
+    }
+    .ata-texto {
+      font-size: 1rem;
+      line-height: 1.6;
+      text-align: justify;
+    }
+    .ata-texto p {
+      margin-bottom: 1rem;
+    }
+    .lacuna {
+      display: inline-block;
+      min-width: 90px;
+      border-bottom: 1px dotted #333;
+      text-align: center;
+      padding: 0.2rem 0.3rem;
+      font-family: inherit;
+      font-size: 1rem;
+      background: transparent;
+      margin: 0 2px;
+      cursor: text;
+      white-space: pre-wrap;
+      word-break: break-word;
+      vertical-align: baseline;
+    }
+    .lacuna[contenteditable="true"]:empty:before {
+      content: attr(placeholder);
+      color: #aaa;
+      font-style: italic;
+    }
+    .lacuna-curta { min-width: 80px; }
+    .lacuna-media { min-width: 140px; }
+    .lacuna-longa { min-width: 260px; }
+    .lacuna-muito-longa { min-width: 400px; }
+    .lacuna-nome { min-width: 280px; }
+    .lacuna-inst { min-width: 180px; }
+    .lacuna[contenteditable="true"]:focus {
+      outline: none;
+      border-bottom-color: var(--azul);
+      background-color: #f0f7ff;
+    }
+    .membros-banca {
+      margin: 1.5rem 0 1rem 0;
+      width: 100%;
+    }
+    .membro-linha {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+      padding: 0.2rem 0;
+    }
+    .membro-prefixo {
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .membro-nome {
+      flex: 3;
+      min-width: 220px;
+    }
+    .membro-traco {
+      margin: 0 0.2rem;
+    }
+    .membro-instituicao {
+      flex: 2;
+      min-width: 150px;
+    }
+    .membro-funcao {
+      font-weight: 500;
+      white-space: nowrap;
+      color: var(--azul);
+    }
+    .assinatura-membro {
+      margin: 0.8rem 0 1.5rem 2rem;
+      width: calc(100% - 2rem);
+    }
+    .assinatura-linha {
+      display: block;
+      width: 100%;
+      border-bottom: 1px solid #000;
+      height: 1px;
+      background: transparent;
+    }
+    .actions {
+      margin-top: 2rem;
+      text-align: center;
+      padding-top: 1rem;
+      border-top: 1px solid var(--borda);
+    }
+    .btn {
+      padding: 0.7rem 1.5rem;
+      background: var(--azul);
+      color: white;
+      border: none;
+      border-radius: 40px;
+      cursor: pointer;
+      font-weight: bold;
+      margin: 0 0.5rem;
+    }
+    .btn-secondary {
+      background: var(--ouro);
+      color: var(--azul);
+    }
+    @media print {
+      body, .container { background: white; padding: 0 !important; margin: 0 !important; box-shadow: none; }
+      .container { max-width: 100%; }
+      .actions { display: none; }
+      * { page-break-before: auto !important; page-break-after: auto !important; page-break-inside: auto !important; break-inside: auto !important; }
+      .header-logos, h1, .subtitulo { page-break-after: avoid; break-after: avoid; }
+      .lacuna { border-bottom: 1px solid #000 !important; }
+      .assinatura-linha { border-bottom: 1px solid #000 !important; }
+      @page { margin: 1.5cm; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="header-logos">
+    <div><img src="ceppodi.png" alt="Ceppodi" class="logo-img" onerror="this.style.display='none'"></div>
+    <div><img src="UEPG.jpg" alt="UEPG" class="logo-img" onerror="this.style.display='none'"></div>
+    <div><img src="secijur.png" alt="Secijur" class="logo-img" onerror="this.style.display='none'"></div>
+  </div>
+
+  <div class="info-inst">
+    UNIVERSIDADE ESTADUAL DE PONTA GROSSA<br>
+    Av. General Carlos Cavalcanti, 4748 - Bairro Uvaranas - CEP 84030-900 - Ponta Grossa - PR - https://uepg.br
+  </div>
+
+  <div class="numero-ata">
+    ATA n° <span class="lacuna lacuna-curta" contenteditable="true" placeholder="xxxxx"></span> (verificar número com a secretaria)
+  </div>
+
+  <div class="info-inst">
+    Pró-Reitoria de Pesquisa e Pós-Graduação
+  </div>
+
+  <h1>PROGRAMA DE MESTRADO PROFISSIONAL EM DIREITO</h1>
+  <div class="subtitulo">DEFESA DE DISSERTAÇÃO</div>
+
+  <div class="ata-texto">
+    <p>
+      Aos <span class="lacuna lacuna-curta" contenteditable="true" placeholder="(dia)"></span> dias do mês de 
+      <span class="lacuna lacuna-media" contenteditable="true" placeholder="(mês)"></span>
+      do ano de dois mil e <span class="lacuna lacuna-curta" contenteditable="true" placeholder="(ano)"></span> ocorreu a defesa no 
+      <span class="lacuna lacuna-longa" contenteditable="true" placeholder="(local)"></span>, da Universidade Estadual de Ponta Grossa, com início às 
+      <span class="lacuna lacuna-media" contenteditable="true" placeholder="(horário)"></span> horas, reuniu-se a Banca Examinadora, indicada pelo Colegiado do Programa de Pós Graduação em 
+      <span class="lacuna lacuna-longa" contenteditable="true" placeholder="(programa)"></span>, composta pelos professores:
+    </p>
+  </div>
+
+  <div class="membros-banca">
+    <div class="membro-linha">
+      <span class="membro-prefixo">Dr.</span>
+      <span class="lacuna membro-nome lacuna-nome" contenteditable="true" placeholder="(nome completo)"></span>
+      <span class="membro-traco">-</span>
+      <span class="lacuna membro-instituicao lacuna-inst" contenteditable="true" placeholder="(INSTITUIÇÃO)"></span>
+      <span class="membro-funcao">– Presidente</span>
+    </div>
+    <div class="assinatura-membro"><div class="assinatura-linha"></div></div>
+
+    <div class="membro-linha">
+      <span class="membro-prefixo">Dr.</span>
+      <span class="lacuna membro-nome lacuna-nome" contenteditable="true" placeholder="(nome completo)"></span>
+      <span class="membro-traco">-</span>
+      <span class="lacuna membro-instituicao lacuna-inst" contenteditable="true" placeholder="(INSTITUIÇÃO)"></span>
+    </div>
+    <div class="assinatura-membro"><div class="assinatura-linha"></div></div>
+
+    <div class="membro-linha">
+      <span class="membro-prefixo">Dr.</span>
+      <span class="lacuna membro-nome lacuna-nome" contenteditable="true" placeholder="(nome completo)"></span>
+      <span class="membro-traco">-</span>
+      <span class="lacuna membro-instituicao lacuna-inst" contenteditable="true" placeholder="(INSTITUIÇÃO)"></span>
+    </div>
+    <div class="assinatura-membro"><div class="assinatura-linha"></div></div>
+
+    <div class="membro-linha">
+      <span class="membro-prefixo">Dr.</span>
+      <span class="lacuna membro-nome lacuna-nome" contenteditable="true" placeholder="(nome completo)"></span>
+      <span class="membro-traco">-</span>
+      <span class="lacuna membro-instituicao lacuna-inst" contenteditable="true" placeholder="(INSTITUIÇÃO)"></span>
+      <span class="membro-funcao">– Suplente</span>
+    </div>
+    <div class="assinatura-membro"><div class="assinatura-linha"></div></div>
+  </div>
+
+  <div class="ata-texto">
+    <p>
+      A reunião teve por objetivo julgar o trabalho do(a) mestrando(a) 
+      <span class="lacuna lacuna-muito-longa" contenteditable="true" placeholder="(nome do mestrando)"></span>, sob o título 
+      “<span class="lacuna lacuna-muito-longa" contenteditable="true" placeholder="(título da dissertação)"></span>”.
+    </p>
+    <p>
+      Aberta a sessão, a Presidência deu conhecimento, aos membros da banca e ao candidato(a) das normas que regem a Defesa e definiu a ordem das arguições a ser seguida pelos examinadores. Na sequência, foram concedidos até 30 (trinta) minutos ao candidato para a apresentação de seu trabalho. Após, a Banca Examinadora levou a efeito a arguição do(a) Mestrando(a). Encerrada a Defesa, a Banca procedeu ao julgamento do trabalho e o (a) candidato (a) foi 
+      <select id="resultado" style="border: none; border-bottom: 1px dotted #333; background: transparent; font-family: inherit; font-size: 1rem; padding: 0.2rem; min-width: 150px;">
+        <option value="APROVADO(A)">APROVADO(A)</option>
+        <option value="REPROVADO(A)">REPROVADO(A)</option>
+      </select>.
+    </p>
+    <p>
+      A Presidência ressalvou que a obtenção dos créditos de Dissertação está condicionada ao disposto: a atual aprovação outorga o Título de Mestre em 
+      <span class="lacuna lacuna-longa" contenteditable="true" placeholder="(programa)"></span> com validade de sessenta dias; o não depósito da versão definitiva da Dissertação em pdf, com todas as correções feitas e atestadas pelo (a) orientador (a) neste prazo anulará toda possibilidade de outorga definitiva do Título, recebimento de Certidão e outros documentos, bem como a solicitação do Diploma.
+    </p>
+    <p>
+      A Banca Examinadora determina ainda que sejam atendidas as seguintes observações: 
+      <span class="lacuna lacuna-muito-longa" contenteditable="true" placeholder="(na revisão do texto final, a inclusão da síntese dos resultados, a revisão gramatical e das referências, etc.)" style="min-width: 500px;"></span>
+    </p>
+    <p>
+      Nada mais havendo a tratar, foi lavrado a presente Ata, que vai assinada pelos membros da Banca Examinadora.
+    </p>
+    <p style="text-align: right;">
+      Ponta Grossa, <span class="lacuna lacuna-curta" contenteditable="true" placeholder="(dia)"></span> de 
+      <span class="lacuna lacuna-media" contenteditable="true" placeholder="(mês)"></span>
+      de <span class="lacuna lacuna-curta" contenteditable="true" placeholder="(ano)"></span>.
+    </p>
+  </div>
+
+  <div class="membros-banca">
+    <p style="font-weight: 700; margin-bottom: 0.5rem;">Membros da Banca:</p>
+    
+    <div class="membro-linha">
+      <span class="membro-prefixo">Prof. Dr.</span>
+      <span class="lacuna membro-nome lacuna-nome" contenteditable="true" placeholder="(nome completo)"></span>
+      <span class="membro-traco">-</span>
+      <span class="lacuna membro-instituicao lacuna-inst" contenteditable="true" placeholder="(UEPG)"></span>
+      <span class="membro-funcao">– Presidente</span>
+    </div>
+    <div class="membro-linha">
+      <span class="membro-prefixo">Prof. Dr.</span>
+      <span class="lacuna membro-nome lacuna-nome" contenteditable="true" placeholder="(nome completo)"></span>
+      <span class="membro-traco">-</span>
+      <span class="lacuna membro-instituicao lacuna-inst" contenteditable="true" placeholder="(INSTITUIÇÃO)"></span>
+    </div>
+    <div class="membro-linha">
+      <span class="membro-prefixo">Prof. Dr.</span>
+      <span class="lacuna membro-nome lacuna-nome" contenteditable="true" placeholder="(nome completo)"></span>
+      <span class="membro-traco">-</span>
+      <span class="lacuna membro-instituicao lacuna-inst" contenteditable="true" placeholder="(INSTITUIÇÃO)"></span>
+    </div>
+    <div class="membro-linha">
+      <span class="membro-prefixo">Prof. Dr.</span>
+      <span class="lacuna membro-nome lacuna-nome" contenteditable="true" placeholder="(nome completo)"></span>
+      <span class="membro-traco">-</span>
+      <span class="lacuna membro-instituicao lacuna-inst" contenteditable="true" placeholder="(INSTITUIÇÃO)"></span>
+      <span class="membro-funcao">- Suplente</span>
+    </div>
+  </div>
+
+  <div class="ata-texto">
+    <p><em>P.S: Esse documento pode ser gerado no SEI e assinado digitalmente pelos membros da banca.</em></p>
+  </div>
+
+  <div class="actions">
+    <button type="button" class="btn" onclick="window.print()">🖨️ Imprimir / Gerar PDF</button>
+    <button type="button" class="btn btn-secondary" id="btnLimpar">🗑️ Limpar formulário</button>
+  </div>
+</div>
+
+<script>
+  (function() {
+    const lacunas = document.querySelectorAll('.lacuna[contenteditable="true"]');
+    const resultadoSelect = document.getElementById('resultado');
+
+    function salvarDados() {
+      let dados = {};
+      lacunas.forEach((el, idx) => { dados[`lacuna_${idx}`] = el.innerText; });
+      dados.resultado = resultadoSelect.value;
+      localStorage.setItem('ataDefesaPPGD', JSON.stringify(dados));
+    }
+
+    function restaurarDados() {
+      const saved = localStorage.getItem('ataDefesaPPGD');
+      if (!saved) return;
+      try {
+        const dados = JSON.parse(saved);
+        lacunas.forEach((el, idx) => { if (dados[`lacuna_${idx}`] !== undefined) el.innerText = dados[`lacuna_${idx}`]; });
+        if (dados.resultado) resultadoSelect.value = dados.resultado;
+      } catch(e) {}
+    }
+
+    function adicionarEventos() {
+      lacunas.forEach(lacuna => {
+        lacuna.addEventListener('input', () => salvarDados());
+        lacuna.addEventListener('blur', () => salvarDados());
+      });
+      resultadoSelect.addEventListener('change', () => salvarDados());
+    }
+
+    document.getElementById('btnLimpar').addEventListener('click', () => {
+      if (confirm('Tem certeza que deseja limpar todos os dados?')) {
+        localStorage.removeItem('ataDefesaPPGD');
+        location.reload();
+      }
+    });
+
+    restaurarDados();
+    adicionarEventos();
+    salvarDados();
+  })();
+</script>
+</body>
+</html>
